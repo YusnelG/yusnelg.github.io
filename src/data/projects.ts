@@ -29,6 +29,7 @@ const projects: Project[] = [
     link: "/",
     isComingSoon: true,
   },
+  
 ];
 
 export default projects;
