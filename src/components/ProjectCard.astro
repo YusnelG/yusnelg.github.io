@@ -13,7 +13,7 @@ const formatTechs = (values: string[]) =>
 <>
   {
     isComingSoon && (
-      <div class="t group flex w-full flex-col justify-between gap-2 rounded-md border border-neutral-700 p-4 md:flex-row md:items-center">
+      <div class="group flex w-full flex-col justify-between gap-2 rounded-md border border-neutral-700 p-2 md:flex-row md:items-center">
         {" "}
         <Image
           src={img ?? "/post_img.webp"}
@@ -25,8 +25,8 @@ const formatTechs = (values: string[]) =>
         <div class="grow w-full pl-4">
           <div class="flex items-start">
             <h1 class="text-neutral-300 text-xl font-bold pr-2">{title}</h1>
-            <p class="w-[3rem] text-sm rounded-md bg-neutral-900 px-2 py-1">
-              Soon
+            <p class="w-[8rem] text-sm rounded-md text-center bg-neutral-900 px-2 py-1">
+              Cooming Soon
             </p>
           </div>
           <p class="py-1">{description}</p>
