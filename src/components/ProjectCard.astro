@@ -1,0 +1,69 @@
+---
+import type { Project } from "@/data/projects";
+import { Image } from "astro:assets";
+
+type Props = Project;
+
+const { title, description, techs, link, isComingSoon, img } = Astro.props;
+
+const formatTechs = (values: string[]) =>
+  values.toString().replaceAll(",", " • ");
+---
+
+<>
+  {
+    isComingSoon && (
+      <div class="t group flex w-full flex-col justify-between gap-2 rounded-md border border-neutral-700 p-4 md:flex-row md:items-center">
+        {" "}
+        <Image
+          src={img ?? "/post_img.webp"}
+          class="self-center rounded-lg w-[45rem] md:max-w-[13rem]"
+          alt="Your Profile"
+          width="200"
+          height="200"
+        />
+        <div class="grow w-full pl-4">
+          <div class="flex items-start">
+            <h1 class="text-neutral-300 text-xl font-bold pr-2">{title}</h1>
+            <p class="w-[3rem] text-sm rounded-md bg-neutral-900 px-2 py-1">
+              Soon
+            </p>
+          </div>
+          <p class="py-1">{description}</p>
+          <div class="flex flex-row-reverse">
+            <p class="text-blue-500 py-3 md:py-1">{formatTechs(techs)}</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  {
+    !isComingSoon && (
+      <>
+        <a
+          class="group flex w-full cursor-pointer flex-col gap-5 md:gap-3 rounded-md border border-neutral-700 p-2 transition-all duration-300 hover:-translate-y-2 hover:border-neutral-400 md:flex-row md:items-center"
+          href={link}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {" "}
+          <Image
+            src={img ?? "/post_img.webp"}
+            class="self-center rounded-lg w-[45rem] md:max-w-[13rem]"
+            alt="Your Profile"
+            width="200"
+            height="200"
+          />
+          <div class="grow w-full pl-4">
+            <h1 class="text-neutral-300 text-xl font-bold">{title}</h1>
+            <p class="py-1">{description}</p>
+            <div class="flex flex-row-reverse">
+              <p class="text-blue-500 py-3 md:py-1">{formatTechs(techs)}</p>
+            </div>
+          </div>
+        </a>
+      </>
+    )
+  }
+</>

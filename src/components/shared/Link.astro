@@ -1,0 +1,30 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a"> & {
+  label: string;
+  isUnderline?: boolean;
+};
+
+const { label, isUnderline, ...props } = Astro.props;
+---
+
+<a
+  href={props.href}
+  class:list={{
+    ["hover:text-neutral-100 cursor-pointer"]: true,
+    ["underline decoration-wavy underline-offset-8"]: isUnderline,
+  }}
+  {...props}
+  rel="noreferrer"
+  target="_blank"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    style="fill: currentColor;transform: ;msFilter:;"
+    ><path fill-rule="evenodd" clip-rule="evenodd" d={label}></path></svg
+  >
+</a>
