@@ -1,0 +1,28 @@
+---
+import presentation from "@/data/presentation";
+import Link from "./shared/Link.astro";
+import IconEL from "./IconEL.astro";
+
+---
+
+<article class="flex flex-col gap-8">
+    <header class="flex w-full flex-row justify-between gap-2">
+      <h3 class="text-lg flex gap-3 items-center text-neutral-100">Get in touch <IconEL/></h3>
+    </header>
+    <p>
+      Email me at <a class="font-bold" href={`mailto:${presentation.mail}`}
+        >{presentation.mail}</a
+      > or follow me via my social links.
+    </p>
+    <div
+          class="flex self-center justify-center bottom-0 bg-base-200"
+        >
+          {
+            presentation.socials.map((social, index) => (
+              <>
+                <Link href={social.link} label={social.label} />
+              </>
+            ))
+          }
+        </div>
+  </article>

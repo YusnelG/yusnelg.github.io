@@ -10,6 +10,12 @@ import convertAsteriskToStrongTag from "@/utils/convertAsteriskToStrongTag";
 
 import presentation from "@/data/presentation";
 import projects from "@/data/projects";
+import Footer from "@/components/Footer.astro";
+import IconCV from "@/components/IconCV.astro";
+import Timeline from "@/components/Timeline.astro";
+import IconPJ from "@/components/IconPJ.astro";
+import IconXP from "@/components/IconXP.astro";
+import IconBG from "@/components/IconBG.astro";
 
 const posts = (await getCollection("posts")).sort(function (first, second) {
   return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
@@ -25,7 +31,7 @@ const posts = (await getCollection("posts")).sort(function (first, second) {
         presentation.profile && (
           <Image
             src={presentation.profile}
-            class="w-[40%] md:w-[25%] self-center rounded-full"
+            class="w-[40%] md:w-[25%] self-center rounded-full border-2 border-[#ffffff12]"
             alt="Your Profile"
             width="200"
             height="200"
@@ -39,11 +45,15 @@ const posts = (await getCollection("posts")).sort(function (first, second) {
         </h1>
 
         <h2
-          class="w-auto max-w-[60ch] leading-6"
+          class="w-auto max-w-[60ch] md:text-left text-center leading-6"
           set:html={convertAsteriskToStrongTag(presentation.description)}
         />
         <div class="flex items-center justify-center">
-          <button type="button" class="text-white bg-blue-800 hover:bg-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-[#1f407b]">Download CV</button>
+          <button
+            type="button"
+            class="text-white bg-blue-800 flex items-center hover:bg-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-[#1f407b]"
+            ><span><IconCV /></span>Download CV</button
+          >
           <div
             class="-ml-2 flex self-center justify-center bottom-0 bg-base-200"
           >
@@ -60,11 +70,19 @@ const posts = (await getCollection("posts")).sort(function (first, second) {
     </article>
     <article class="flex flex-col gap-8">
       <header class="flex w-full flex-row justify-between gap-2">
-        <h3 class="text-lg text-neutral-100">
-          Selected projects ({projects.length})
+        <h3 class="text-xl flex gap-2 items-center text-neutral-100">
+          Experiencie <IconXP />
         </h3>
       </header>
-      {projects.length === 0 && <p>Oops, I must work^^^^^</p>}
+      <Timeline />
+    </article>
+    <article class="flex flex-col gap-8">
+      <header class="flex w-full flex-row justify-between gap-2">
+        <h3 class="text-xl flex gap-2 items-center text-neutral-100">
+          Projects ({projects.length}) <IconPJ />
+        </h3>
+      </header>
+      {projects.length === 0 && <p>Oops, I must work...</p>}
 
       <section class="flex flex-col gap-4">
         {
@@ -75,7 +93,9 @@ const posts = (await getCollection("posts")).sort(function (first, second) {
     </article>
     <article class="flex flex-col gap-8">
       <header class="flex w-full flex-row justify-between gap-2">
-        <h3 class="text-lg text-neutral-100">Latest posts</h3>
+        <h3 class="text-xl flex gap-3 items-center text-neutral-100">
+          Latest posts <IconBG />
+        </h3>
         <Link href="/posts" label="See all posts" isUnderline target="_self" />
       </header>
       {posts.length === 0 && <p>Soon, stay connected 👀...</p>}
@@ -97,26 +117,6 @@ const posts = (await getCollection("posts")).sort(function (first, second) {
       </section>
     </article>
 
-    <article class="flex flex-col gap-8">
-      <header class="flex w-full flex-row justify-between gap-2">
-        <h3 class="text-lg text-neutral-100">Get in touch</h3>
-      </header>
-      <p>
-        Email me at <a class="font-bold" href={`mailto:${presentation.mail}`}
-          >{presentation.mail}</a
-        > or follow me via my social links.
-      </p>
-      <div
-            class="flex self-center justify-center bottom-0 bg-base-200"
-          >
-            {
-              presentation.socials.map((social, index) => (
-                <>
-                  <Link href={social.link} label={social.label} />
-                </>
-              ))
-            }
-          </div>
-    </article>
+    <Footer />
   </main>
 </Layout>
