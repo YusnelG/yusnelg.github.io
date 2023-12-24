@@ -3,7 +3,9 @@ import removeTrailingSlash from "@/utils/removeTrailingSlash";
 const pathname = removeTrailingSlash(Astro.url.pathname);
 ---
 
-<header class="z-40 flex w-full flex-col gap-2 md:flex-row-reverse md:justify-between items-center">
+<header
+  class="z-40 flex w-full flex-col gap-2 md:flex-row-reverse md:justify-between items-center"
+>
   <nav role="navigation" class="py-6 md:py-1">
     <ul role="list" class="flex flex-row gap-4 md:gap-2">
       <li>
