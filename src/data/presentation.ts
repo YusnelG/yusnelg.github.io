@@ -11,6 +11,7 @@ type Presentation = {
   socials: Links[];
   contact: Links[];
   profile?: string;
+  cv?: string;
 };
 
 const presentation: Presentation = {
@@ -18,6 +19,7 @@ const presentation: Presentation = {
   logo: "YusnelG",
   title: "Hi, I’m Yusnel Leyva 👋",
   profile: "/profile2.jpg",
+  cv: "/yusnel-cv.pdf",
   description:
     "Software developer 👨‍💻 especially *dedicated to the ❤ backend*, I am a minimalist and I like coffee ☕. *I share what I learn through my social networks 💻💬.* Technology enthusiast ⚡",
   socials: [

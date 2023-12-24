@@ -4,6 +4,7 @@ export type Project = {
   techs: string[];
   img?: string;
   link: string;
+  codelink: string;
   isComingSoon?: boolean;
 };
 
@@ -13,20 +14,24 @@ const projects: Project[] = [
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     techs: ["test", "test", "test"],
     link: "#",
+    codelink: "#",
     img: "/post_img.webp",
   },
   {
-    title: "Project 2",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    techs: ["test", "test", "test"],
-    link: "#",
-    img: "/post_img.webp",
+    title: "Real Time Chat App",
+    description: "A simple real-time chat application with the functionality of creating private groups.",
+    techs: ["Python" ,"Flask", "SocketIO", "JavaScript"],
+    link: "https://yusnelg.pythonanywhere.com/",
+    codelink: "https://github.com/YusnelG/python-flask-chat",
+    img: "/projects/realtimechat.webp",
   },
   {
-    title: "Project 3",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et",
-    techs: ["test"],
+    title: "Fpip",
+    description: "A pip clone created in the Rust language to make it more efficient and faster",
+    techs: ["Rust", "Fs", "http"],
     link: "/",
+    codelink: "/",
+    img: "/projects/fpip.webp",
     isComingSoon: true,
   },
   
