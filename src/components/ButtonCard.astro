@@ -4,6 +4,7 @@ const { link, text, border, primary } = Astro.props;
 
 <a
   href={link}
+  target="_blank"
   class=`text-white ${border ?? "bg-blue-800 dark:bg-[#1f407b] hover:bg-blue-900"} flex items-center font-medium rounded-md text-sm px-2 py-1 me-2`
 >
   {text}
