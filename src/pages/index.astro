@@ -75,7 +75,20 @@ const posts = (await getCollection("posts")).sort(function (first, second) {
           Experience <IconXP />
         </h3>
       </header>
-      <Timeline />
+      <ol class="relative border-s border-gray-200 ml-9 dark:border-gray-700">
+        <Timeline title="Backend Developer" date="February 20 - June, 2023">
+          Work with Python, using Frameworks like Django and FastAPI for the
+          creation of an Eccomerce. Using base of data like MySQL and MongoDB.
+        </Timeline>
+        <Timeline
+          title="Frontend Web Developer"
+          date="March 24 - November, 2022"
+        >
+          Work on the development of a Web of administration of inventory. Use
+          languages like JavaScript and Frameworks like React. EndPoints for a
+          data base believes where you drove and created users.
+        </Timeline>
+      </ol>
     </article>
     <article class="flex flex-col gap-8">
       <header class="flex w-full flex-row justify-between gap-2">
@@ -101,7 +114,7 @@ const posts = (await getCollection("posts")).sort(function (first, second) {
       </header>
       {posts.length === 0 && <p>Soon, stay connected 👀...</p>}
 
-      <section class="flex flex-col gap-4 md:flex-row md:flex-wrap">
+      <section class="flex gap-4 flex-col md:flex-nowrap">
         {
           posts.length !== 0 &&
             posts
