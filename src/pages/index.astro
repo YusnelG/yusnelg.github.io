@@ -10,16 +10,20 @@ import convertAsteriskToStrongTag from "@/utils/convertAsteriskToStrongTag";
 
 import presentation from "@/data/presentation";
 import projects from "@/data/projects";
+import techs from "@/data/tech";
 import Footer from "@/components/Footer.astro";
 import IconCV from "@/components/IconCV.astro";
 import Timeline from "@/components/Timeline.astro";
 import IconPJ from "@/components/IconPJ.astro";
 import IconXP from "@/components/IconXP.astro";
 import IconBG from "@/components/IconBG.astro";
+import SkillsCard from "@/components/SkillsCard.astro";
 
 const posts = (await getCollection("posts")).sort(function (first, second) {
   return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
 });
+
+const formatTechs = (values: string[]) => values.toString();
 ---
 
 <Layout>
@@ -105,16 +109,33 @@ const posts = (await getCollection("posts")).sort(function (first, second) {
         }
       </section>
     </article>
+   <!--  <article class="flex flex-col gap-8">
+      <header class="flex w-full flex-row justify-between gap-2">
+        <h3 class="text-xl flex gap-2 items-center text-neutral-100">
+          Skills ({techs.length})
+        </h3>
+      </header>
+      {projects.length === 0 && <p>Oops, I must work...</p>}
+
+      <section class="flex flex-row gap-2">
+        {
+          techs.length !== 0 &&
+            techs.map((skill) => <SkillsCard tech={skill} />)
+        }
+      </section>
+    </article> -->
+
     <article class="flex flex-col gap-8">
       <header class="flex w-full flex-row justify-between gap-2">
         <h3 class="text-xl flex gap-3 items-center text-neutral-100">
           Latest posts <IconBG />
         </h3>
-        <Link href="/posts" label="See all posts" isUnderline target="_self" />
       </header>
       {posts.length === 0 && <p>Soon, stay connected 👀...</p>}
 
-      <section class="flex gap-4 flex-col md:flex-nowrap">
+      <section
+        class=`flex gap-4 flex-col ${posts.length >= 2 && "justify-center"} md:flex-row items-center`
+      >
         {
           posts.length !== 0 &&
             posts
